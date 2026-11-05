@@ -23,22 +23,23 @@ bước phối hợp hơn, hữu ích khi nhịp phát hành và môi trường 
 Nếu hợp đồng còn thay đổi mạnh, 0.4.0 vẫn phù hợp. Trong bài, 1.0.0 đóng mốc
 phát hành để các lab sau thực hành minor 1.1.0 và patch 1.0.1.
 
-## Vì sao chuẩn bị release trên master?
+## Vì sao nên chuẩn bị release trên nhánh tích hợp?
 
-Version, tài liệu và test được tích hợp qua PR trước; nhánh release chỉ rẽ
-từ trạng thái đã kiểm tra. Tránh có bản sửa chuẩn bị chỉ tồn tại trên release
-và bị bỏ quên ở dòng phát triển.
+Tích hợp version, tài liệu và test trước khi tạo nhánh release giúp nhánh phát
+hành bắt đầu từ trạng thái đã kiểm tra. Cách này cũng giảm nguy cơ bản sửa chỉ
+tồn tại trên release và bị bỏ quên ở dòng phát triển.
 
 ## Tag và nhánh release
 
-Annotated tag chứa người tạo, thời gian và lời nhắn, định danh baseline cố
-định. release/lab04 có thể tiến lên bởi PR hotfix. Vì thế sau Lab 05, tag
-v1.0.0 vẫn ở commit cũ còn đầu release/lab04 chuyển sang v1.0.1.
+Annotated tag định danh một baseline cố định; nhánh release có thể tiến lên
+khi nhận hotfix. Nếu phát hành bản vá, giữ tag cũ và tạo tag mới thay vì di
+chuyển tag đã công bố. Repository `202416418` hiện chưa có tag hoặc nhánh
+release.
 
 ## Ghi nhận và tái tạo
 
 `git log A..B` liệt kê commit chỉ có ở B; `git diff A B` so snapshot.
 `git describe --tags` cho tag tổ tiên gần nhất kèm khoảng cách commit.
 Dùng detached HEAD/worktree để chạy lại bản cũ và `git archive` đóng gói.
-CI được đưa vào từ trước khi rẽ release/lab04 để các PR hotfix cũng được test;
-đây là phần mở rộng Lab 05 áp dụng sớm.
+Repository `202416418` hiện chưa có workflow CI hoặc lịch sử phát hành; các
+lệnh này mô tả cách thực hiện khi có tag và nhánh tương ứng.

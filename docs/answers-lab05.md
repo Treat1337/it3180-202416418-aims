@@ -10,17 +10,15 @@ Release first bắt đầu đúng baseline gặp lỗi: phạm vi nhỏ, có th�
 phát hành bản vá khẩn nhanh. Rủi ro là quên đưa fix về master hoặc dòng release
 khác. Cần một checklist lan truyền và kiểm toán hành vi ở từng dòng.
 
-## Nếu quên sửa release/lab05 thì lệnh nào phát hiện?
+## Nếu quên backport thì cách nào phát hiện?
 
-Vòng lặp kiểm tra hành vi trên `v1.0.1`, `v1.1.0`, `master` trong Phần F phát
-hiện trực tiếp: dòng nào còn lỗi sẽ in 0 thay vì 1.
+Chạy cùng một kiểm tra hành vi trên từng nhánh hoặc phiên bản được bảo trì;
+dòng nào còn lỗi sẽ cho kết quả sai.
 
 `git tag --contains FIX_SHA` chỉ xét quan hệ tổ tiên của đúng commit gốc.
-Cherry-pick tạo SHA mới; vì vậy v1.1.0 không nhất thiết xuất hiện dù đã nhận fix.
-Không được suy luận thiếu bản sửa chỉ từ việc tag không chứa SHA gốc.
-`git cherry -v origin/release/lab05 origin/release/lab04` bổ sung kiểm tra
-patch tương đương: dấu `-` cho fix nghĩa là đã có patch tương đương ở lab05.
-Lệnh so với master trong ví dụ của đề chỉ kiểm tra master, không kiểm tra lab05.
+Cherry-pick tạo SHA mới; vì vậy cần so sánh patch hoặc kiểm tra hành vi thay vì
+chỉ tìm SHA. `git cherry` có thể giúp phát hiện patch tương đương giữa hai
+nhánh.
 
 ## Vì sao tách commit sửa lỗi và tăng version?
 
@@ -32,11 +30,9 @@ version sẽ bị hạ hoặc xung đột. CHANGELOG cập nhật riêng theo d�
 Nhánh còn cần nhận hotfix và kiểm thử. Tag chỉ được đặt khi baseline sẵn sàng.
 Nếu v1.1.0 đã công bố thì phải phát hành v1.1.1, không di chuyển tag cũ.
 
-## Truy vết
+## Minh chứng trong repository `202416418`
 
-- Issue lỗi tìm kiếm: #19.
-- FIX_SHA gốc: `959624edec1c4e8f17b0ab3940ba03c9fe3aaab8`.
-- Cherry-pick về master: `7fddd7a888d9902360a105292d8405edcfd342a9`.
-- Cherry-pick về lab05: `03e4f868c235cac2455371c08b292afd48f7b2a0`.
-- Cả hai commit dùng `cherry-pick -x`, giữ dòng nguồn gốc trong message.
-- Dòng 1.0.x chỉ sửa tìm kiếm, không nhận sort/category từ master.
+Repository hiện chưa có Issue, nhánh release, tag hoặc commit backport để truy
+vết. Các lệnh và giải thích ở trên là hướng dẫn cho quy trình; không dùng SHA
+hay số Issue từ repository khác làm bằng chứng. Trước khi nộp, cần tạo và liên
+kết minh chứng thực tế nếu bài yêu cầu.

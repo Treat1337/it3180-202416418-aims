@@ -28,9 +28,9 @@ thể rebase hoặc amend; commit chung cần sửa bằng commit mới/revert.
 | Squash | Một commit tổng hợp mới trên nhánh đích | Revert commit đó |
 | Rebase and merge | Các commit tuyến tính với SHA được GitHub tạo lại | Có thể phải revert nhiều commit |
 
-## Làm cá nhân
+## Review khi làm cá nhân
 
-Thiết lập yêu cầu PR với 0 approval theo tùy chọn trong đề. Tự kiểm tra phát
-hiện thiếu thông báo giỏ rỗng và thêm commit sửa trên cùng PR. Không giả lập
-`Changes requested → Approved` bằng tài khoản khác: GitHub không cho tác giả
-tự approve. Phần review độc lập cần một bạn học thực sự nếu giảng viên yêu cầu.
+Nếu đề cho phép làm cá nhân, cấu hình số approval theo đúng yêu cầu. Tự kiểm
+tra không thay thế review độc lập; không giả lập reviewer. Nếu giảng viên yêu
+cầu review bạn học, cần nhờ một bạn học thực hiện trên PR thật. Repository
+`202416418` hiện chưa có PR hoặc review làm minh chứng.
